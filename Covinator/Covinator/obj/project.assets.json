@@ -48,19 +48,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vpsap\\.nuget\\packages\\": {}
+    "C:\\Users\\ruthv\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vpsap\\OneDrive\\Documents\\GitHub\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
+<<<<<<< Updated upstream
+      "projectUniqueName": "D:\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
       "projectName": "Covinator",
-      "projectPath": "C:\\Users\\vpsap\\OneDrive\\Documents\\GitHub\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
-      "packagesPath": "C:\\Users\\vpsap\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vpsap\\OneDrive\\Documents\\GitHub\\IS7024\\Covinator\\Covinator\\obj\\",
+      "projectPath": "D:\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
+      "packagesPath": "C:\\Users\\ruthv\\.nuget\\packages\\",
+      "outputPath": "D:\\IS7024\\Covinator\\Covinator\\obj\\",
+=======
+      "projectUniqueName": "D:\\XML\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
+      "projectName": "Covinator",
+      "projectPath": "D:\\XML\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
+      "packagesPath": "C:\\Users\\ruthv\\.nuget\\packages\\",
+      "outputPath": "D:\\XML\\IS7024\\Covinator\\Covinator\\obj\\",
+>>>>>>> Stashed changes
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\vpsap\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ruthv\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -109,7 +117,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
