@@ -1,17 +1,11 @@
 ﻿@page
-@model IndexModel
+@model Covinator.Pages.UsCaseDeathsModel
 @{
-    ViewData["Title"] = "Home page";
-    var casesDeathss = (QuickType.CasesDeaths[]) ViewData["CasesDeaths"];
+    var casesDeathss = (QuickType.CasesDeaths[])ViewData["CasesDeaths"];
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">US: COVID Cases and Deaths information</h1>
     <table>
         <tr>
             <th>Submission Date</th>
