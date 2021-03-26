@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< Updated upstream
     "D:\\IS7024\\Covinator\\Covinator\\Covinator.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "D:\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
         "packagesPath": "C:\\Users\\ruthv\\.nuget\\packages\\",
         "outputPath": "D:\\IS7024\\Covinator\\Covinator\\obj\\",
+=======
+    "D:\\XML\\IS7024\\Covinator\\Covinator\\Covinator.csproj": {}
+  },
+  "projects": {
+    "D:\\XML\\IS7024\\Covinator\\Covinator\\Covinator.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\XML\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
+        "projectName": "Covinator",
+        "projectPath": "D:\\XML\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
+        "packagesPath": "C:\\Users\\ruthv\\.nuget\\packages\\",
+        "outputPath": "D:\\XML\\IS7024\\Covinator\\Covinator\\obj\\",
+>>>>>>> Stashed changes
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ruthv\\AppData\\Roaming\\NuGet\\NuGet.Config",
