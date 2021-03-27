@@ -48,27 +48,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ruthv\\.nuget\\packages\\": {}
+    "C:\\Users\\raghunsh\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< Updated upstream
-      "projectUniqueName": "D:\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
+      "projectUniqueName": "C:\\Users\\raghunsh\\OneDrive - University of Cincinnati\\XML\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
       "projectName": "Covinator",
-      "projectPath": "D:\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
-      "packagesPath": "C:\\Users\\ruthv\\.nuget\\packages\\",
-      "outputPath": "D:\\IS7024\\Covinator\\Covinator\\obj\\",
-=======
-      "projectUniqueName": "D:\\XML\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
-      "projectName": "Covinator",
-      "projectPath": "D:\\XML\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
-      "packagesPath": "C:\\Users\\ruthv\\.nuget\\packages\\",
-      "outputPath": "D:\\XML\\IS7024\\Covinator\\Covinator\\obj\\",
->>>>>>> Stashed changes
+      "projectPath": "C:\\Users\\raghunsh\\OneDrive - University of Cincinnati\\XML\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
+      "packagesPath": "C:\\Users\\raghunsh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\raghunsh\\OneDrive - University of Cincinnati\\XML\\IS7024\\Covinator\\Covinator\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ruthv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\raghunsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -80,7 +76,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -92,7 +87,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Newtonsoft.Json": {
             "target": "Package",
@@ -117,7 +111,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

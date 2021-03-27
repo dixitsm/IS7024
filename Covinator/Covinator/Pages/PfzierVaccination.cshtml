@@ -1,0 +1,33 @@
+﻿@page
+@model Covinator.Pages.PfzierVaccination
+@{
+    ViewData["Title"] = "Home page";
+    var pfizerVaccineDistributionAllocationss = (QuickType.PfizerVaccineDistributionAllocations[])ViewData["PfizerVaccineDistributionAllocations"];
+}
+
+<div class="text-center">
+    <h1 class="display-4">Pfizer Vaccine Distribution Allocations</h1>
+    <hr />
+    <table border="1" weidth="90%">
+        <tr>
+            <th>Jurisdiction</th>
+            <th>Week of allocations</th>
+            <th>1st dose allocations</th>
+            <th>2nd dose allocations</th>
+            @{
+                foreach (QuickType.PfizerVaccineDistributionAllocations pfizerVaccineDistributionAllocations in pfizerVaccineDistributionAllocationss)
+                {
+                <tr>
+                    <td>@pfizerVaccineDistributionAllocations.Jurisdiction </td>
+                    <td>@pfizerVaccineDistributionAllocations.WeekOfAllocations of allocations </td>
+                    <td>@pfizerVaccineDistributionAllocations.The1StDoseAllocations </td>
+                    <td>@pfizerVaccineDistributionAllocations.The2NdDoseAllocations </td>
+
+                </tr>
+            }
+            }
+
+        </table>
+
+    </div>
+    }

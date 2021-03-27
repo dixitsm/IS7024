@@ -1,16 +1,10 @@
 {
   "version": 2,
-<<<<<<< Updated upstream
-  "dgSpecHash": "tAG7zDE/TizNHwL2w0vHbWjOioVDdGK9GOGNmjWtNXNC4CjjKi2qRDXIAh0pUaMNBbBULjcSbcm5ugVeLXn4lQ==",
+  "dgSpecHash": "1ahTulCOE1o2+GEycq6+PzNuyrBJE/xVf4XGylUPSAbaJLVgGyfkCG9MfrglyQUxhKZypDllDmHmTIvsnur2uw==",
   "success": true,
-  "projectFilePath": "D:\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
-=======
-  "dgSpecHash": "Y005FqooQi0xFG1vndukV9+e6yObwFfeB0gF18hgzLaBNnaeE6uMm4R4rq/iC8N5fDv6tHkzGkIwAZRG2JIVew==",
-  "success": true,
-  "projectFilePath": "D:\\XML\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
->>>>>>> Stashed changes
+  "projectFilePath": "C:\\Users\\raghunsh\\OneDrive - University of Cincinnati\\XML\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ruthv\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\raghunsh\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

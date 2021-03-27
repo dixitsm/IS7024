@@ -76,12 +76,12 @@ namespace QuickType
         public static CasesDeaths[] FromJson(string json) => JsonConvert.DeserializeObject<CasesDeaths[]>(json, QuickType.Converter.Settings);
     }
 
-    public static class Serialize
+    public static class Serialize1
     {
         public static string ToJson(this CasesDeaths[] self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
     }
 
-    internal static class Converter
+    internal static class Converter1
     {
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
@@ -141,7 +141,7 @@ namespace QuickType
         public static readonly ConsentConverter Singleton = new ConsentConverter();
     }
 
-    internal class ParseStringConverter : JsonConverter
+    internal class ParseStringConverter1 : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(long) || t == typeof(long?);
 
