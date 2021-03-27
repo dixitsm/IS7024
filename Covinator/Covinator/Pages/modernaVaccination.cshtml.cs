@@ -11,27 +11,29 @@ using QuickType;
 
 namespace Covinator.Pages
 {
-    public class UsCaseDeathsModel : PageModel
+    public class modernaVaccinationModel : PageModel
     {
         public void OnGet()
         {
             using (var webClient = new WebClient())
             {
-                string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
-                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("casesDeathSchema.json"));
+                string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/b7pe-5nws.json");
+
+                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("modernaSchema.json"));
                 JArray jsonArray = JArray.Parse(jsonString);
                 IList<string> validationEvents = new List<string>();
                 if (jsonArray.IsValid(schema, out validationEvents))
                 {
-                    var casesDeaths = CasesDeaths.FromJson(jsonString);
-                    ViewData["CasesDeaths"] = casesDeaths;
+                    var modernaVaccineDistributionAllocations = ModernaVaccineDistributionAllocations.FromJson(jsonString);
+                    ViewData["ModernaVaccineDistributionAllocations"] = modernaVaccineDistributionAllocations;
+
                 }
                 else
                 {
                     foreach (string evt in validationEvents)
                     {
                         Console.WriteLine(evt);
-                        ViewData["CasesDeaths"] = new CasesDeaths();
+                        ViewData["ModernaVaccineDistributionAllocations"] = new ModernaVaccineDistributionAllocations();
                     }
                 }
                 
