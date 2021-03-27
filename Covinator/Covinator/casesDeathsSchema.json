@@ -1,22 +1,20 @@
 ﻿{
   "$schema": "http://json-schema.org/draft-06/schema#",
   "type": "array",
-  "title": "Covid 19 Active cases and deaths ",
-  "descrption": "The data related to the number of active cases of Covid 19 and the deaths caused by it in the USA",
   "items": {
-    "$ref": "#/definitions/CasesDeaths"
+    "$ref": "#/definitions/WelcomeElement"
   },
   "definitions": {
-    "CasesDeaths": {
+    "WelcomeElement": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "submission_date": {
-          "format": "date-time",
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         "state": {
-          "$ref": "#/definitions/State"
+          "type": "string"
         },
         "tot_cases": {
           "type": "string",
@@ -74,47 +72,16 @@
         "tot_cases",
         "tot_death"
       ],
-      "title": "CasesDeaths"
+      "title": "WelcomeElement"
     },
     "Consent": {
       "type": "string",
       "enum": [
         "Agree",
-        "N/A",
-        "Not agree"
+        "Not agree",
+        "N/A"
       ],
       "title": "Consent"
-    },
-    "State": {
-      "type": "string",
-      "enum": [
-        "OK",
-        "SD",
-        "UT",
-        "GA",
-        "WV",
-        "PA",
-        "TN",
-        "AS",
-        "PW",
-        "HI",
-        "MP",
-        "IA",
-        "CO",
-        "KS",
-        "PR",
-        "RMI",
-        "NY",
-        "NM",
-        "AR",
-        "NYC",
-        "OH",
-        "AK",
-        "MA",
-        "TX",
-        "FL"
-      ],
-      "title": "State"
     }
   }
 }

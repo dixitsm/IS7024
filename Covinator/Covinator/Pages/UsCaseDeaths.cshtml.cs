@@ -42,8 +42,26 @@ namespace Covinator.Pages
             using (var webClient = new WebClient())
             {
                 string usCasesData = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
-                var casesDeaths = CasesDeaths.FromJson(usCasesData);
-                ViewData["CasesDeaths"] = casesDeaths;
+
+                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("casesDeathsSchema.json"));
+                JArray jsonArray = JArray.Parse(usCasesData);
+                IList<string> validationEvents = new List<string>();
+                if (jsonArray.IsValid(schema, out validationEvents))
+                {
+                    var casesDeaths1 = CasesDeaths.FromJson(usCasesData);
+                    ViewData["CasesDeaths"] = casesDeaths1;
+
+                }
+                else
+                {
+                    foreach (string evt in validationEvents)
+                    {
+                        Console.WriteLine(evt);
+                        ViewData["ModernaVaccineDistributionAllocations"] = new ModernaVaccineDistributionAllocations();
+                    }
+                }
+
+                
             }
         }
     }
