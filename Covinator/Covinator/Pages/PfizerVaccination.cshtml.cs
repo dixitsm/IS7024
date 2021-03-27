@@ -25,12 +25,12 @@ namespace Covinator.Pages
         {
             using (var webClient = new WebClient())
             {
-             string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/saz5-9hgg.json");
+             string pfizerData = webClient.DownloadString("https://data.cdc.gov/resource/saz5-9hgg.json");
                 JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("pfizerSchema.json"));
-                JArray jsonArray = JArray.Parse(jsonString);
+                JArray jsonArray = JArray.Parse(pfizerData);
                 IList<string> validationEvents = new List<string>(); 
                 if (jsonArray.IsValid(schema, out validationEvents)){ 
-                    var pfizerVaccineDistributionAllocations = PfizerVaccineDistributionAllocations.FromJson(jsonString);
+                    var pfizerVaccineDistributionAllocations = PfizerVaccineDistributionAllocations.FromJson(pfizerData);
                     ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;
 
                 }

@@ -120,3 +120,4 @@ C:\Users\Moiz\OneDrive\Documents\GitHub\IS7024\IS7024\Covinator\Covinator\obj\De
 C:\Users\Moiz\OneDrive\Documents\GitHub\IS7024\IS7024\Covinator\Covinator\obj\Debug\netcoreapp3.1\Razor\Pages\modernaVaccination.cshtml.g.cs
 C:\Users\Moiz\OneDrive\Documents\GitHub\IS7024\IS7024\Covinator\Covinator\obj\Debug\netcoreapp3.1\Razor\Pages\PfizerVaccination.cshtml.g.cs
 C:\Users\Moiz\OneDrive\Documents\GitHub\IS7024\IS7024\Covinator\Covinator\bin\Debug\netcoreapp3.1\modernaSchema.json
+C:\Users\Moiz\OneDrive\Documents\GitHub\IS7024\IS7024\Covinator\Covinator\bin\Debug\netcoreapp3.1\casesDeathsSchema.json

@@ -13,12 +13,12 @@ namespace Covinator.Pages
 {
     public class UsCaseDeathsModel : PageModel
     {
-        public void OnGet()
+        /*public void OnGet()
         {
             using (var webClient = new WebClient())
             {
                 string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
-                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("casesDeathSchema.json"));
+                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("casesDeathsSchema.json"));
                 JArray jsonArray = JArray.Parse(jsonString);
                 IList<string> validationEvents = new List<string>();
                 if (jsonArray.IsValid(schema, out validationEvents))
@@ -35,6 +35,15 @@ namespace Covinator.Pages
                     }
                 }
                 
+            }
+        }*/
+        public void OnGet()
+        {
+            using (var webClient = new WebClient())
+            {
+                string usCasesData = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
+                var casesDeaths = CasesDeaths.FromJson(usCasesData);
+                ViewData["CasesDeaths"] = casesDeaths;
             }
         }
     }

@@ -17,14 +17,14 @@ namespace Covinator.Pages
         {
             using (var webClient = new WebClient())
             {
-                string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/b7pe-5nws.json");
+                string modernaData = webClient.DownloadString("https://data.cdc.gov/resource/b7pe-5nws.json");
 
                 JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("modernaSchema.json"));
-                JArray jsonArray = JArray.Parse(jsonString);
+                JArray jsonArray = JArray.Parse(modernaData);
                 IList<string> validationEvents = new List<string>();
                 if (jsonArray.IsValid(schema, out validationEvents))
                 {
-                    var modernaVaccineDistributionAllocations = ModernaVaccineDistributionAllocations.FromJson(jsonString);
+                    var modernaVaccineDistributionAllocations = ModernaVaccineDistributionAllocations.FromJson(modernaData);
                     ViewData["ModernaVaccineDistributionAllocations"] = modernaVaccineDistributionAllocations;
 
                 }

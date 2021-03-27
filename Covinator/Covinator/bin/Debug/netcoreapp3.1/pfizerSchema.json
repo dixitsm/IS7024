@@ -24,14 +24,14 @@
           "type": "string",
           "format": "integer",
           "description": "The number of vaccines allocated for first Dose",
-          "minimum": 100000
+          "minimum": 0
 
         },
         "_2nd_dose_allocations": {
           "type": "string",
           "format": "integer",
           "description": "The number of vaccines allocated for second Dose",
-          "minimum": 10000
+          "minimum": 0
         }
       },
       "required": [
