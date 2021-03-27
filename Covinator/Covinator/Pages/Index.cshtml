@@ -2,35 +2,17 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-
- var modernaVaccineDistributionAllocationss = (QuickType.ModernaVaccineDistributionAllocations[])ViewData["ModernaVaccineDistributionAllocations"];
 }
-
-
-
-<div class="text-center">
-    <h1 class="display-4">Moderna Vaccine Distribution Allocations</h1>
-    <hr />
-    <table border="1" weidth="90%">
-        <tr>
-            <th>Jurisdiction</th>
-            <th>Week of allocations</th>
-            <th>1st dose allocations</th>
-            <th>2nd dose allocations</th>
-            @{ foreach (QuickType.ModernaVaccineDistributionAllocations modernaVaccineDistributionAllocations in modernaVaccineDistributionAllocationss)
-                            {
-            <tr>
-                <td>@modernaVaccineDistributionAllocations.Jurisdiction </td>
-                <td>@modernaVaccineDistributionAllocations.WeekOfAllocations of allocations </td>
-                <td>@modernaVaccineDistributionAllocations.The1StDoseAllocations </td>
-                <td>@modernaVaccineDistributionAllocations.The2NdDoseAllocations </td>
-
-            </tr> } }
-
-
-
-        </table>
-
-
-
-    </div>
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+</style>
+<div>
+    <h1 style="text-align:center"> Welcome to Covinator</h1>
+    <h3 style="text-align:center">We can fight the virus together</h3>
+    <img src="https://i.ytimg.com/vi/6OR68gQgWDQ/maxresdefault.jpg" class="center" alt="Terminator image" width="600" height="500">
+</div>

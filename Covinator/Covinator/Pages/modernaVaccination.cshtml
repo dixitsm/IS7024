@@ -1,0 +1,34 @@
+﻿@page
+@model Covinator.Pages.modernaVaccinationModel
+@{
+    var modernaVaccineDistributionAllocationss = (QuickType.ModernaVaccineDistributionAllocations[])ViewData["ModernaVaccineDistributionAllocations"];
+}
+
+<div class="text-center">
+    <h1 class="display-4">Moderna Vaccine Distribution Allocations</h1>
+    <hr />
+    <table border="1" weidth="90%">
+        <tr>
+            <th>Jurisdiction</th>
+            <th>Week of allocations</th>
+            <th>1st dose allocations</th>
+            <th>2nd dose allocations</th>
+            @{ foreach (QuickType.ModernaVaccineDistributionAllocations modernaVaccineDistributionAllocations in modernaVaccineDistributionAllocationss)
+                {
+                <tr>
+                    <td>@modernaVaccineDistributionAllocations.Jurisdiction </td>
+                    <td>@modernaVaccineDistributionAllocations.WeekOfAllocations of allocations </td>
+                    <td>@modernaVaccineDistributionAllocations.The1StDoseAllocations </td>
+                    <td>@modernaVaccineDistributionAllocations.The2NdDoseAllocations </td>
+
+                </tr>
+ } }
+
+
+
+        </table>
+
+
+
+    </div>
+

@@ -27,12 +27,12 @@ namespace Covinator.Pages
 
         public void OnGet()
         {
-            using (var webClient = new WebClient())
+            /*using (var webClient = new WebClient())
             {
                 string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/b7pe-5nws.json");
                 var modernaVaccineDistributionAllocations = ModernaVaccineDistributionAllocations.FromJson(jsonString);
                 ViewData["ModernaVaccineDistributionAllocations"] = modernaVaccineDistributionAllocations;
-            }
+            }*/
         }
     }
 }
