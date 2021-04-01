@@ -6,6 +6,7 @@
     using System.Globalization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
+    using Newtonsoft.Json.Linq;
 
     public partial class PfizerVaccineDistributionAllocations
     {
@@ -22,6 +23,8 @@
         [JsonProperty("_2nd_dose_allocations")]
         [JsonConverter(typeof(ParseStringConverter))]
         public long The2NdDoseAllocations { get; set; }
+
+     
     }
 
     public partial class PfizerVaccineDistributionAllocations
