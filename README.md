@@ -1,6 +1,6 @@
-#COVINATOR
+# COVINATOR
 
-###Introduction:
+### Introduction:
 2021 is the year of vaccination! Come, take a look at our detailed application on the COVID-19 vaccination data. Here’s what you can find on our site:
 
 1. Total number of vaccine doses administered 
