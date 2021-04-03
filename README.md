@@ -4,7 +4,7 @@
 2021 is the year of vaccination! Come, take a look at our detailed application on the COVID-19 vaccination data. Here’s what you can find on our site:
 
 1. Total number of vaccine doses administered 
-2. State-wise/ County-wise comparison
+2. State-wise/ County-wise comparison- Pfizer vs Moderna
 3. Demographic trends
 4. People at increased risks 
 
