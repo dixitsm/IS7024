@@ -1,8 +1,8 @@
 ﻿@page
 @model Covinator.Pages.PfizerVaccination
 @{
-    ViewData["Title"] = "Home page";
-    var pfizerVaccineDistributionAllocationss = (QuickType.PfizerVaccineDistributionAllocations[])ViewData["PfizerVaccineDistributionAllocations"];
+    ViewData["Title"] = "Pfizer Vaccination";
+    var pfizerAllocations = (QuickType.PfizerVaccineDistributionAllocations[])ViewData["PfizerVaccineDistributionAllocations"];
     var currentWeek = ViewData["CurrentWeek"];
 }
 <style>
@@ -98,13 +98,13 @@
             <th>1st dose allocations</th>
             <th>2nd dose allocations</th>
             @{
-                foreach (QuickType.PfizerVaccineDistributionAllocations pfizerVaccineDistributionAllocations in pfizerVaccineDistributionAllocationss)
+                foreach (QuickType.PfizerVaccineDistributionAllocations pfizerAllocation in pfizerAllocations)
                 {
                 <tr>
-                    <td>@pfizerVaccineDistributionAllocations.Jurisdiction </td>
-                    <td>@pfizerVaccineDistributionAllocations.WeekOfAllocations of allocations </td>
-                    <td>@pfizerVaccineDistributionAllocations.The1StDoseAllocations </td>
-                    <td>@pfizerVaccineDistributionAllocations.The2NdDoseAllocations </td>
+                    <td>@pfizerAllocation.Jurisdiction </td>
+                    <td>@pfizerAllocation.WeekOfAllocations of allocations </td>
+                    <td>@pfizerAllocation.The1StDoseAllocations </td>
+                    <td>@pfizerAllocation.The2NdDoseAllocations </td>
 
                 </tr>
             }
