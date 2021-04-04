@@ -8,19 +8,19 @@
 <div class="text-center">
     <h1 class="display-4">Moderna Vaccine Distribution Allocations</h1>
     <hr />
-
-    @{
-        if (modernaAllocations.Length > 0)
+  
+       @if (modernaAllocations.Length > 0)
         {
-            foreach (QuickType.ModernaVaccineDistributionAllocations modernaAllocation in modernaAllocations)
-            {
-                <table border="1" weidth="90%">
-                    <tr>
-                        <th>Jurisdiction</th>
-                        <th>Week of allocations</th>
-                        <th>1st dose allocations</th>
-                        <th>2nd dose allocations</th>
 
+            <table border="1" weidth="90%">
+                <tr>
+                    <th>Jurisdiction</th>
+                    <th>Week of allocations</th>
+                    <th>1st dose allocations</th>
+                    <th>2nd dose allocations</th>
+                </tr>
+                @foreach (QuickType.ModernaVaccineDistributionAllocations modernaAllocation in modernaAllocations)
+                {
                     <tr>
                         <td>@modernaAllocation.Jurisdiction </td>
                         <td>@modernaAllocation.WeekOfAllocations</td>
@@ -28,15 +28,14 @@
                         <td>@modernaAllocation.The2NdDoseAllocations </td>
 
                     </tr>
+                }
 
+            </table>
 
-                </table>
-            }
         }
         else
         {
-            <h1 class="display-4">No Data to Display</h1>
+            <h1 class="display-4">No Data to display</h1>
         }
-    }
 </div>
 

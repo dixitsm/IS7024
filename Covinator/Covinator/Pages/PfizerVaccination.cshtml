@@ -9,16 +9,20 @@
     .table {
         padding: 30px 30px 30px 30px;
     }
+
     .table-striped {
         padding: 30px 30px 30px 30px;
     }
+
     .dropdown1 {
         padding: 15px 15px 15px 15px;
     }
+
     .button1 {
         padding: 15px 15px 15px 15px;
     }
-    ,form{
+
+    , form {
         padding: 15px 15px 15px 15px;
     }
 </style>
@@ -90,34 +94,33 @@
 
         <input type="submit" value="Details by State" name="Get Details" class="button1">
     </form>
-    @{
+    @if (pfizerAllocations.Length > 0)
+    {
 
-        if (pfizerAllocations.Length > 0)
-        {
-            foreach (QuickType.PfizerVaccineDistributionAllocations pfizerAllocation in pfizerAllocations)
+        <table border="1" weidth="90%" class="table table-striped">
+            <tr>
+                <th>Jurisdiction</th>
+                <th>Week of allocations</th>
+                <th>1st dose allocations</th>
+                <th>2nd dose allocations</th>
+            </tr>
+            @foreach (QuickType.PfizerVaccineDistributionAllocations pfizerAllocation in pfizerAllocations)
             {
-                <table border="1" weidth="90%" class="table table-striped">
-                    <tr>
-                        <th>Jurisdiction</th>
-                        <th>Week of allocations</th>
-                        <th>1st dose allocations</th>
-                        <th>2nd dose allocations</th>
+                <tr>
+                    <td>@pfizerAllocation.Jurisdiction </td>
+                    <td>@pfizerAllocation.WeekOfAllocations</td>
+                    <td>@pfizerAllocation.The1StDoseAllocations </td>
+                    <td>@pfizerAllocation.The2NdDoseAllocations </td>
 
-                    <tr>
-                        <td>@pfizerAllocation.Jurisdiction </td>
-                        <td>@pfizerAllocation.WeekOfAllocations</td>
-                        <td>@pfizerAllocation.The1StDoseAllocations </td>
-                        <td>@pfizerAllocation.The2NdDoseAllocations </td>
-
-                    </tr>
-
-                </table>
+                </tr>
             }
-        }
-        else
-        {
-            <h1 class="display-4">No Data to Display</h1>
-        }
+        </table>
+
     }
+    else
+    {
+        <h1 class="display-4">No Data to display</h1>
+    }
+
 </div>
-    
+
