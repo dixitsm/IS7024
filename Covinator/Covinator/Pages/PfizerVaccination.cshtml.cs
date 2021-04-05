@@ -29,32 +29,27 @@ namespace Covinator.Pages
                 JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("pfizerSchema.json"));
                 JArray jsonArray = JArray.Parse(pfizerData);
                 IList<string> validationEvents = new List<string>();
-                var currentWeek1 = jsonArray[0];
-                
-                var currentWeek = currentWeek1["week_of_allocations"];
-
-
+                var currentWeek1 = jsonArray[0].ToArray();
+                var currentWeek = currentWeek1[1].ToString();
                 if (jsonArray.IsValid(schema, out validationEvents))
                 {
 
                     JArray result_array = new JArray();
                     JArray jarray = new JArray();
                     var length_arr = jsonArray.Count();
-                    
-            
-                    foreach (JObject i in jsonArray
-                        .Where(obj => obj["week_of_allocations"].ToString() == currentWeek.ToString()))
+                    for (int i=0; i<63; i++)
                     {
-                        result_array.Add(i);
+                        result_array.Add(jsonArray[i]);
+
                     }
 
                     string result_string = result_array.ToString();
 
                     var pfizerVaccineDistributionAllocations = PfizerVaccineDistributionAllocations.FromJson(result_string);
 
+                    /*ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;*/
                     ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;
                     ViewData["CurrentWeek"] = currentWeek;
-                    
 
                 }
                 else
@@ -73,16 +68,12 @@ namespace Covinator.Pages
         public void OnPost()
         {
             var jurisdiction = Request.Form["jurisdiction"];
-
             using (var webClient = new WebClient())
             {
                 string pfizerData = webClient.DownloadString("https://data.cdc.gov/resource/saz5-9hgg.json");
                 JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("pfizerSchema.json"));
                 JArray jsonArray = JArray.Parse(pfizerData);
                 IList<string> validationEvents = new List<string>();
-                var currentWeek1 = jsonArray[0];
-
-                var currentWeek = currentWeek1["week_of_allocations"];
                 
                 if (jsonArray.IsValid(schema, out validationEvents))
                 {
@@ -101,9 +92,7 @@ namespace Covinator.Pages
 
                     /*ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;*/
                     ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;
-                    ViewData["Jurisdiction"] = jurisdiction;
-                    ViewData["CurrentWeek"] = currentWeek;
-
+                   
                 }
                 else
                 {
