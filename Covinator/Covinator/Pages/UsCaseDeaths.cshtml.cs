@@ -1,67 +1,54 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 using QuickType;
+using System;
+using System.Collections.Generic;
+using System.Net;
 
 namespace Covinator.Pages
 {
     public class UsCaseDeathsModel : PageModel
     {
-        /*public void OnGet()
+        private readonly ILogger<UsCaseDeathsModel> _logger;
+
+        public UsCaseDeathsModel(ILogger<UsCaseDeathsModel> logger)
         {
-            using (var webClient = new WebClient())
-            {
-                string jsonString = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
-                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("casesDeathsSchema.json"));
-                JArray jsonArray = JArray.Parse(jsonString);
-                IList<string> validationEvents = new List<string>();
-                if (jsonArray.IsValid(schema, out validationEvents))
-                {
-                    var casesDeaths = CasesDeaths.FromJson(jsonString);
-                    ViewData["CasesDeaths"] = casesDeaths;
-                }
-                else
-                {
-                    foreach (string evt in validationEvents)
-                    {
-                        Console.WriteLine(evt);
-                        ViewData["CasesDeaths"] = new CasesDeaths();
-                    }
-                }
-                
-            }
-        }*/
+            _logger = logger;
+        }
+
         public void OnGet()
         {
-            using (var webClient = new WebClient())
+            try
             {
-                string usCasesData = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
-
-                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("casesDeathsSchema.json"));
-                JArray jsonArray = JArray.Parse(usCasesData);
-                IList<string> validationEvents = new List<string>();
-                if (jsonArray.IsValid(schema, out validationEvents))
+                using (var webClient = new WebClient())
                 {
-                    var casesDeaths1 = CasesDeaths.FromJson(usCasesData);
-                    ViewData["CasesDeaths"] = casesDeaths1;
+                    string usCasesData = webClient.DownloadString("https://data.cdc.gov/resource/9mfq-cb36.json");
 
-                }
-                else
-                {
-                    foreach (string evt in validationEvents)
+                    JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("casesDeathsSchema.json"));
+                    JArray jsonArray = JArray.Parse(usCasesData);
+                    IList<string> validationEvents = new List<string>();
+                    if (jsonArray.IsValid(schema, out validationEvents))
                     {
-                        Console.WriteLine(evt);
-                        ViewData["ModernaVaccineDistributionAllocations"] = new ModernaVaccineDistributionAllocations();
+                        var casesDeaths1 = CasesDeaths.FromJson(usCasesData);
+                        ViewData["CasesDeaths"] = casesDeaths1;
+                    }
+                    else
+                    {
+                        _logger.LogError("us cases json validation failed");
+                        foreach (string evt in validationEvents)
+                        {
+                            _logger.LogWarning($"Error while validating us cases schema {evt}");
+                            Console.WriteLine(evt);
+                            ViewData["ModernaVaccineDistributionAllocations"] = new ModernaVaccineDistributionAllocations();
+                        }
                     }
                 }
-
-                
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception occured OnGet US Death cases {ex}");
             }
         }
     }

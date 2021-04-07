@@ -1,116 +1,45 @@
 ﻿@page
 @model Covinator.Pages.PfizerVaccination
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Pfizer Vaccine";
     var pfizerVaccineDistributionAllocationss = (QuickType.PfizerVaccineDistributionAllocations[])ViewData["PfizerVaccineDistributionAllocations"];
     var currentWeek = ViewData["CurrentWeek"];
 }
-<style>
-    .table {
-        padding: 30px 30px 30px 30px;
-    }
-    .table-striped {
-        padding: 30px 30px 30px 30px;
-    }
-    .dropdown1 {
-        padding: 15px 15px 15px 15px;
-    }
-    .button1 {
-        padding: 15px 15px 15px 15px;
-    }
-    ,form{
-        padding: 15px 15px 15px 15px;
-    }
-</style>
-<div class="text-center">
-    <h1 class="display-4">Pfizer Vaccine Allocations For All States: <h3>@currentWeek</h3></h1>
-    <hr />
 
-    <form method="post" >
+<div class="text-center">
+    <h1>Pfizer Vaccine Allocations for the week: @currentWeek</h1>
+
+    <form method="post">
+
         <select name="jurisdiction" required class="dropdown1">
             <option value="0">Select a State</option>
-            <option value="Alabama">Alabama</option>
-            <option value="Alaska">Alaska</option>
-            <option value="Arizona">Arizona</option>
-            <option value="Arkansas">Arkansas</option>
-            <option value="California">California</option>
-            <option value="Colorado">Colorado</option>
-            <option value="Connecticut">Connecticut</option>
-            <option value="Delaware">Delaware</option>
-            <option value="District of Columbia">District Of Columbia</option>
-            <option value="Florida">Florida</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Hawaii">Hawaii</option>
-            <option value="Idaho">Idaho</option>
-            <option value="Illinois">Illinois</option>
-            <option value="Indiana">Indiana</option>
-            <option value="Iowa">Iowa</option>
-            <option value="Kansas">Kansas</option>
-            <option value="Kentucky">Kentucky</option>
-            <option value="Louisiana">Louisiana</option>
-            <option value="Maine">Maine</option>
-            <option value="Maryland">Maryland</option>
-            <option value="Massachusetts">Massachusetts</option>
-            <option value="Michigan">Michigan</option>
-            <option value="Minnesota">Minnesota</option>
-            <option value="Mississippi">Mississippi</option>
-            <option value="Missouri">Missouri</option>
-            <option value="Montana">Montana</option>
-            <option value="Nebraska">Nebraska</option>
-            <option value="Nevada">Nevada</option>
-            <option value="New Hampshire">New Hampshire</option>
-            <option value="New Jersey">New Jersey</option>
-            <option value="New Mexico">New Mexico</option>
-            <option value="New York">New York</option>
-            <option value="North Carolina">North Carolina</option>
-            <option value="North Dakota">North Dakota</option>
-            <option value="Ohio">Ohio</option>
-            <option value="Oklahoma">Oklahoma</option>
-            <option value="Oregon">Oregon</option>
-            <option value="Pennsylvania">Pennsylvania</option>
-            <option value="Rhode Island">Rhode Island</option>
-            <option value="South Carolina">South Carolina</option>
-            <option value="South Dakota">South Dakota</option>
-            <option value="Tennessee">Tennessee</option>
-            <option value="Texas">Texas</option>
-            <option value="Utah">Utah</option>
-            <option value="Vermont">Vermont</option>
-            <option value="Virginia">Virginia</option>
-            <option value="Washington">Washington</option>
-            <option value="West Virginia">West Virginia</option>
-            <option value="Wisconsin">Wisconsin</option>
-            <option value="Wyoming">Wyoming</option>
-            <option value="Guam">Guam</option>
-            <option value="American Samoa">American Samoa</option>
-            <option value="Puerto Rico">Puerto Rico</option>
-            <option value="U.S. Virgin Islands">U.S. Virgin Islands</option>
-            <option value="Federal Entities">Federal Entities</option>
-            
+            @foreach (var jurisdiction in Model.JurisdictionsList)
+            {
+                <option value="@jurisdiction">@jurisdiction</option>
+            }
         </select>
-
         <input type="submit" value="Details by State" name="Get Details" class="button1">
     </form>
-    
-    <table border="1" weidth="90%" class="table table-striped">
-        <tr>
-            <th>Jurisdiction</th>
-            <th>Week of allocations</th>
-            <th>1st dose allocations</th>
-            <th>2nd dose allocations</th>
-            @{
-                foreach (QuickType.PfizerVaccineDistributionAllocations pfizerVaccineDistributionAllocations in pfizerVaccineDistributionAllocationss)
-                {
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Jurisdiction</th>
+                <th>Week of allocations</th>
+                <th>1st dose allocations</th>
+                <th>2nd dose allocations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (QuickType.PfizerVaccineDistributionAllocations pfizerVaccineDistributionAllocations in pfizerVaccineDistributionAllocationss)
+            {
                 <tr>
                     <td>@pfizerVaccineDistributionAllocations.Jurisdiction </td>
-                    <td>@pfizerVaccineDistributionAllocations.WeekOfAllocations of allocations </td>
+                    <td>@pfizerVaccineDistributionAllocations.WeekOfAllocations  </td>
                     <td>@pfizerVaccineDistributionAllocations.The1StDoseAllocations </td>
                     <td>@pfizerVaccineDistributionAllocations.The2NdDoseAllocations </td>
-
                 </tr>
             }
-            }
-
-        </table>
-
-    </div>
-    
+        </tbody>
+    </table>
+</div>

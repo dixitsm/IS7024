@@ -1,22 +1,25 @@
 ﻿@page
 @model Covinator.Pages.UsCaseDeathsModel
 @{
+    ViewData["Title"] = "US Death Cases";
     var casesDeathss = (QuickType.CasesDeaths[])ViewData["CasesDeaths"];
 }
 
 <div class="text-center">
-    <h1 class="display-4">US: COVID Cases and Deaths information </h1>
+    <h1>US: COVID Cases and Deaths information </h1>
     <table class="table table-striped">
-        <tr>
-            <th>Submission Date</th>
-            <th>State</th>
-            <th>New Cases</th>
-            <th>Total Cases</th>
-            <th>New Deaths</th>
-            <th>Total Deaths</th>
-        </tr>
-        @{
-            foreach (QuickType.CasesDeaths caseDeaths in casesDeathss)
+        <thead>
+            <tr>
+                <th>Submission Date</th>
+                <th>State</th>
+                <th>New Cases</th>
+                <th>Total Cases</th>
+                <th>New Deaths</th>
+                <th>Total Deaths</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (QuickType.CasesDeaths caseDeaths in casesDeathss)
             {
                 <tr>
                     <td>@caseDeaths.SubmissionDate</td>
@@ -25,10 +28,8 @@
                     <td>@caseDeaths.TotCases</td>
                     <td>@caseDeaths.NewDeath</td>
                     <td>@caseDeaths.TotDeath</td>
-
                 </tr>
-
             }
-        }
+        </tbody>
     </table>
 </div>

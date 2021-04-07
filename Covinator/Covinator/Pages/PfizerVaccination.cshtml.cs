@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
@@ -8,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace Covinator.Pages
 {
@@ -21,92 +19,112 @@ namespace Covinator.Pages
             _logger = logger;
         }
 
+        public IList<string> JurisdictionsList = new List<string>();
+
         public void OnGet()
         {
-            using (var webClient = new WebClient())
+            try
             {
-                string pfizerData = webClient.DownloadString("https://data.cdc.gov/resource/saz5-9hgg.json");
-                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("pfizerSchema.json"));
-                JArray jsonArray = JArray.Parse(pfizerData);
-                IList<string> validationEvents = new List<string>();
-                var currentWeek1 = jsonArray[0].ToArray();
-                var currentWeek = currentWeek1[1].ToString();
-                if (jsonArray.IsValid(schema, out validationEvents))
+                using (var webClient = new WebClient())
                 {
+                    string pfizerData = webClient.DownloadString("https://data.cdc.gov/resource/saz5-9hgg.json");
+                    JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("pfizerSchema.json"));
+                    JArray jsonArray = JArray.Parse(pfizerData);
+                    IList<string> validationEvents = new List<string>();
 
-                    JArray result_array = new JArray();
-                    JArray jarray = new JArray();
-                    var length_arr = jsonArray.Count();
-                    for (int i=0; i<63; i++)
+                    var currentWeek = jsonArray.FirstOrDefault()?["week_of_allocations"]?.Value<DateTime>().ToShortDateString();
+
+                    if (jsonArray.IsValid(schema, out validationEvents))
                     {
-                        result_array.Add(jsonArray[i]);
+                        JArray result_array = new JArray();
 
+                        for (int i = 0; i < 63; i++)
+                        {
+                            result_array.Add(jsonArray[i]);
+                        }
+
+                        var pfizerVaccineDistributionAllocations = PfizerVaccineDistributionAllocations.FromJson(result_array.ToString());
+
+                        PopulateJurisdictions(jsonArray);
+
+                        ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;
+                        ViewData["CurrentWeek"] = currentWeek;
                     }
-
-                    string result_string = result_array.ToString();
-
-                    var pfizerVaccineDistributionAllocations = PfizerVaccineDistributionAllocations.FromJson(result_string);
-
-                    /*ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;*/
-                    ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;
-                    ViewData["CurrentWeek"] = currentWeek;
-
-                }
-                else
-                {
-
-
-                    foreach (string evt in validationEvents)
+                    else
                     {
-                        Console.WriteLine(evt);
-                        ViewData["PfizerVaccineDistributionAllocations"] = new PfizerVaccineDistributionAllocations();
-                        
+                        _logger.LogError("pfizer json validation failed");
+                        foreach (string evt in validationEvents)
+                        {
+                            _logger.LogWarning($"Error while validating pfizerschema {evt}");
+                            Console.WriteLine(evt);
+                            ViewData["PfizerVaccineDistributionAllocations"] = new PfizerVaccineDistributionAllocations();
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception occured OnGet Pfizer {ex}");
+            }
         }
-        public void OnPost()
+
+        public void OnPost(string State)
         {
-            var jurisdiction = Request.Form["jurisdiction"];
-            using (var webClient = new WebClient())
+            try
             {
-                string pfizerData = webClient.DownloadString("https://data.cdc.gov/resource/saz5-9hgg.json");
-                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("pfizerSchema.json"));
-                JArray jsonArray = JArray.Parse(pfizerData);
-                IList<string> validationEvents = new List<string>();
-                
-                if (jsonArray.IsValid(schema, out validationEvents))
+                var jurisdiction = Request.Form["jurisdiction"];
+                using (var webClient = new WebClient())
                 {
+                    string pfizerData = webClient.DownloadString("https://data.cdc.gov/resource/saz5-9hgg.json");
+                    JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("pfizerSchema.json"));
+                    JArray jsonArray = JArray.Parse(pfizerData);
+                    IList<string> validationEvents = new List<string>();
 
-                    JArray result_array = new JArray();
-                    JArray jarray = new JArray();
-                    foreach (JObject i in jsonArray
-                        .Where(obj => obj["jurisdiction"].Value<string>() == jurisdiction))
+                    if (jsonArray.IsValid(schema, out validationEvents))
                     {
-                        result_array.Add(i);
+                        JArray result_array = new JArray();
+
+                        foreach (JObject i in jsonArray
+                            .Where(obj => obj["jurisdiction"].Value<string>() == jurisdiction))
+                        {
+                            result_array.Add(i);
+                        }
+
+                        PopulateJurisdictions(jsonArray);
+                        var pfizerVaccineDistributionAllocations = PfizerVaccineDistributionAllocations.FromJson(result_array.ToString());
+
+                        /*ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;*/
+                        ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;
                     }
-
-                    string result_string = result_array.ToString();
-
-                    var pfizerVaccineDistributionAllocations = PfizerVaccineDistributionAllocations.FromJson(result_string);
-
-                    /*ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;*/
-                    ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;
-                   
-                }
-                else
-                {
-
-
-                    foreach (string evt in validationEvents)
+                    else
                     {
-                        Console.WriteLine(evt);
-                        ViewData["PfizerVaccineDistributionAllocations"] = new PfizerVaccineDistributionAllocations();
+                        _logger.LogError("pfizer json validation failed");
+                        foreach (string evt in validationEvents)
+                        {
+                            _logger.LogWarning($"Error while validating pfizerschema {evt}");
+                            Console.WriteLine(evt);
+                            ViewData["PfizerVaccineDistributionAllocations"] = new PfizerVaccineDistributionAllocations();
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception occured OnPost Pfizer {ex}");
+            }
         }
-        
-       
+
+        private void PopulateJurisdictions(JArray jsonArray)
+        {
+            _logger.LogInformation("Callinb");
+            List<string> locations = new List<string>();
+            foreach (JObject item in jsonArray)
+            {
+                string name = item.GetValue("jurisdiction").ToString();
+                locations.Add(name);
+            }
+            JurisdictionsList = locations.Distinct().ToList();//updates to only distinct 63 records
+            JurisdictionsList = JurisdictionsList.OrderBy(x => x).ToList(); //sorts the list alphabettically to populate in dropdown
+        }
     }
 }
