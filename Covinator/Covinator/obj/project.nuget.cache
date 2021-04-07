@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "OFlfFtvjxeXJI/LAU5UiHcX3KXzKwtf1ci7d3U9aBOf33gzD2gvZiaq/KD70j+GY7v1g2D8l8tGdzRgUN3W7bA==",
+  "dgSpecHash": "PAIiX24v1xEsfifVtwnWYE/oGVTuC6XUABHEXClL4/JO7Cd4p+klEqCwXjVGHz8FUFEyTNlYZOZyec46EGijNQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS7024\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
+  "projectFilePath": "D:\\Coursework\\IS7024Xml\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Moiz\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\Moiz\\.nuget\\packages\\newtonsoft.json.schema\\3.0.14\\newtonsoft.json.schema.3.0.14.nupkg.sha512"
+    "C:\\Users\\gayatri\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\gayatri\\.nuget\\packages\\newtonsoft.json.schema\\3.0.14\\newtonsoft.json.schema.3.0.14.nupkg.sha512"
   ],
   "logs": []
 }

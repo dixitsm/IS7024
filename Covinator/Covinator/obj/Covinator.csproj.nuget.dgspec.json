@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS7024\\IS7024\\Covinator\\Covinator\\Covinator.csproj": {}
+    "D:\\Coursework\\IS7024Xml\\IS7024\\Covinator\\Covinator\\Covinator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS7024\\IS7024\\Covinator\\Covinator\\Covinator.csproj": {
+    "D:\\Coursework\\IS7024Xml\\IS7024\\Covinator\\Covinator\\Covinator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS7024\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
+        "projectUniqueName": "D:\\Coursework\\IS7024Xml\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
         "projectName": "Covinator",
-        "projectPath": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS7024\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
-        "packagesPath": "C:\\Users\\Moiz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS7024\\IS7024\\Covinator\\Covinator\\obj\\",
+        "projectPath": "D:\\Coursework\\IS7024Xml\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
+        "packagesPath": "C:\\Users\\gayatri\\.nuget\\packages\\",
+        "outputPath": "D:\\Coursework\\IS7024Xml\\IS7024\\Covinator\\Covinator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Moiz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gayatri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
         }
       }
     }
