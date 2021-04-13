@@ -7,27 +7,7 @@
     var jurisdiction = ViewData["Jurisdiction"];
    
 }
-<style>
-    .table {
-        padding: 30px 30px 30px 30px;
-    }
 
-    .table-striped {
-        padding: 30px 30px 30px 30px;
-    }
-
-    .dropdown1 {
-        padding: 15px 15px 15px 15px;
-    }
-
-    .button1 {
-        padding: 15px 15px 15px 15px;
-    }
-
-    , form {
-        padding: 15px 15px 15px 15px;
-    }
-</style>
 <div class="text-center">
     <h1 class="display-4">Pfizer Vaccine Allocations: </h1>
     
@@ -111,7 +91,7 @@
     @if (pfizerAllocations.Length > 0)
     {
 
-        <table border="1" weidth="90%" class="table table-striped">
+        <table class="table table-striped">
             <tr>
                 <th>Jurisdiction</th>
                 <th>Week of allocations</th>

@@ -1,6 +1,8 @@
+using IronPython.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Microsoft.Scripting.Hosting;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 using QuickType;
@@ -15,6 +17,7 @@ namespace Covinator.Pages
     public class PfizerVaccination : PageModel
     {
         private readonly ILogger<PfizerVaccination> _logger;
+        public IList<string> JurisdictionsList = new List<string>();
 
         public PfizerVaccination(ILogger<PfizerVaccination> logger)
         {
@@ -23,6 +26,7 @@ namespace Covinator.Pages
 
         public void OnGet()
         {
+            
             using (var webClient = new WebClient())
             {
                 string pfizerData = webClient.DownloadString("https://data.cdc.gov/resource/saz5-9hgg.json");
