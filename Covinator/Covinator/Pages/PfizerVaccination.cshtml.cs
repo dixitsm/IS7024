@@ -78,6 +78,8 @@ namespace Covinator.Pages
                 }
             }
         }
+
+        
         public void OnPost()
         {
             var jurisdiction = Request.Form["jurisdiction"];
