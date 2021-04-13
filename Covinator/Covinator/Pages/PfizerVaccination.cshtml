@@ -4,6 +4,8 @@
     ViewData["Title"] = "Pfizer Vaccination";
     var pfizerAllocations = (QuickType.PfizerVaccineDistributionAllocations[])ViewData["PfizerVaccineDistributionAllocations"];
     var currentWeek = ViewData["CurrentWeek"];
+    var jurisdiction = ViewData["Jurisdiction"];
+   
 }
 <style>
     .table {
@@ -27,12 +29,23 @@
     }
 </style>
 <div class="text-center">
-    <h1 class="display-4">Pfizer Vaccine Allocations For All States: <h3>@currentWeek</h3></h1>
+    <h1 class="display-4">Pfizer Vaccine Allocations: </h1>
+    
+    <br />
+    @if (@jurisdiction is null)
+    {
+        <h3> Vaccine distribution on @currentWeek.ToString().Substring(0, 9) by states</h3>
+    }
+    else
+    {
+        <h3> For the State of : @jurisdiction</h3>
+    }
+
     <hr />
 
     <form method="post">
         <select name="jurisdiction" required class="dropdown1">
-            <option value="0">Select a State</option>
+            <option value="">Select a State</option>
             <option value="Alabama">Alabama</option>
             <option value="Alaska">Alaska</option>
             <option value="Arizona">Arizona</option>
@@ -94,6 +107,7 @@
 
         <input type="submit" value="Details by State" name="Get Details" class="button1">
     </form>
+
     @if (pfizerAllocations.Length > 0)
     {
 
@@ -108,9 +122,10 @@
             {
                 <tr>
                     <td>@pfizerAllocation.Jurisdiction </td>
-                    <td>@pfizerAllocation.WeekOfAllocations</td>
+                    <td>@pfizerAllocation.WeekOfAllocations.DateTime.ToShortDateString()</td>
                     <td>@pfizerAllocation.The1StDoseAllocations </td>
                     <td>@pfizerAllocation.The2NdDoseAllocations </td>
+
 
                 </tr>
             }
