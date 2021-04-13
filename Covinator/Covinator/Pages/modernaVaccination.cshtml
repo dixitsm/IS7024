@@ -1,34 +1,41 @@
 ﻿@page
 @model Covinator.Pages.modernaVaccinationModel
 @{
-    var modernaVaccineDistributionAllocationss = (QuickType.ModernaVaccineDistributionAllocations[])ViewData["ModernaVaccineDistributionAllocations"];
+    ViewData["Title"] = "Moderna Vaccination";
+    var modernaAllocations = (QuickType.ModernaVaccineDistributionAllocations[])ViewData["ModernaVaccineDistributionAllocations"];
 }
 
 <div class="text-center">
     <h1 class="display-4">Moderna Vaccine Distribution Allocations</h1>
     <hr />
-    <table border="1" weidth="90%">
-        <tr>
-            <th>Jurisdiction</th>
-            <th>Week of allocations</th>
-            <th>1st dose allocations</th>
-            <th>2nd dose allocations</th>
-            @{ foreach (QuickType.ModernaVaccineDistributionAllocations modernaVaccineDistributionAllocations in modernaVaccineDistributionAllocationss)
-                {
+  
+       @if (modernaAllocations.Length > 0)
+        {
+
+            <table border="1" weidth="90%">
                 <tr>
-                    <td>@modernaVaccineDistributionAllocations.Jurisdiction </td>
-                    <td>@modernaVaccineDistributionAllocations.WeekOfAllocations of allocations </td>
-                    <td>@modernaVaccineDistributionAllocations.The1StDoseAllocations </td>
-                    <td>@modernaVaccineDistributionAllocations.The2NdDoseAllocations </td>
-
+                    <th>Jurisdiction</th>
+                    <th>Week of allocations</th>
+                    <th>1st dose allocations</th>
+                    <th>2nd dose allocations</th>
                 </tr>
- } }
+                @foreach (QuickType.ModernaVaccineDistributionAllocations modernaAllocation in modernaAllocations)
+                {
+                    <tr>
+                        <td>@modernaAllocation.Jurisdiction </td>
+                        <td>@modernaAllocation.WeekOfAllocations</td>
+                        <td>@modernaAllocation.The1StDoseAllocations </td>
+                        <td>@modernaAllocation.The2NdDoseAllocations </td>
 
+                    </tr>
+                }
 
+            </table>
 
-        </table>
-
-
-
-    </div>
+        }
+        else
+        {
+            <h1 class="display-4">No Data to display</h1>
+        }
+</div>
 
