@@ -26,15 +26,22 @@ namespace Covinator.Pages
             using (var webClient = new WebClient())
             {
                 string pfizerData = webClient.DownloadString("https://data.cdc.gov/resource/saz5-9hgg.json");
-                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("pfizerSchema.json"));
+                JSchema pfizerSchema = JSchema.Parse(System.IO.File.ReadAllText("pfizerSchema.json"));
                 JArray jsonArray = JArray.Parse(pfizerData);
                 IList<string> validationEvents = new List<string>();
+
                 var currentWeek1 = jsonArray[0];
                 
                 var currentWeek = currentWeek1["week_of_allocations"];
 
 
                 if (jsonArray.IsValid(schema, out validationEvents))
+
+                var currentWeek1 = jsonArray[0].ToArray();
+                var currentWeek = currentWeek1[1].ToString();
+                List<PfizerVaccineDistributionAllocations> currentWeekAllocations = new List<PfizerVaccineDistributionAllocations>();
+                if (jsonArray.IsValid(pfizerSchema, out validationEvents))
+
                 {
 
                     JArray result_array = new JArray();
@@ -50,9 +57,11 @@ namespace Covinator.Pages
 
                     string result_string = result_array.ToString();
 
-                    var pfizerVaccineDistributionAllocations = PfizerVaccineDistributionAllocations.FromJson(result_string);
+                    PfizerVaccineDistributionAllocations [] pfizerAllocations = PfizerVaccineDistributionAllocations.FromJson(result_string);
 
-                    ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;
+
+                    ViewData["PfizerVaccineDistributionAllocations"] = pfizerAllocations;
+
                     ViewData["CurrentWeek"] = currentWeek;
                     
 
@@ -64,7 +73,7 @@ namespace Covinator.Pages
                     foreach (string evt in validationEvents)
                     {
                         Console.WriteLine(evt);
-                        ViewData["PfizerVaccineDistributionAllocations"] = new PfizerVaccineDistributionAllocations();
+                        ViewData["PfizerVaccineDistributionAllocations"] = new PfizerVaccineDistributionAllocations []{ };
                         
                     }
                 }
@@ -100,7 +109,7 @@ namespace Covinator.Pages
                     var pfizerVaccineDistributionAllocations = PfizerVaccineDistributionAllocations.FromJson(result_string);
 
                     /*ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;*/
-                    ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;
+                    ViewData["PfizerVaccineDistributionAllocations"] = pfizerAllocations;
                     ViewData["Jurisdiction"] = jurisdiction;
                     ViewData["CurrentWeek"] = currentWeek;
 
@@ -117,7 +126,5 @@ namespace Covinator.Pages
                 }
             }
         }
-        
-       
     }
 }
