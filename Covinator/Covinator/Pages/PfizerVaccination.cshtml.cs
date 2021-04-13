@@ -29,16 +29,11 @@ namespace Covinator.Pages
                 JSchema pfizerSchema = JSchema.Parse(System.IO.File.ReadAllText("pfizerSchema.json"));
                 JArray jsonArray = JArray.Parse(pfizerData);
                 IList<string> validationEvents = new List<string>();
-
                 var currentWeek1 = jsonArray[0];
-                
+
                 var currentWeek = currentWeek1["week_of_allocations"];
 
 
-                if (jsonArray.IsValid(schema, out validationEvents))
-
-                var currentWeek1 = jsonArray[0].ToArray();
-                var currentWeek = currentWeek1[1].ToString();
                 List<PfizerVaccineDistributionAllocations> currentWeekAllocations = new List<PfizerVaccineDistributionAllocations>();
                 if (jsonArray.IsValid(pfizerSchema, out validationEvents))
 
@@ -106,7 +101,7 @@ namespace Covinator.Pages
 
                     string result_string = result_array.ToString();
 
-                    var pfizerVaccineDistributionAllocations = PfizerVaccineDistributionAllocations.FromJson(result_string);
+                    var pfizerAllocations = PfizerVaccineDistributionAllocations.FromJson(result_string);
 
                     /*ViewData["PfizerVaccineDistributionAllocations"] = pfizerVaccineDistributionAllocations;*/
                     ViewData["PfizerVaccineDistributionAllocations"] = pfizerAllocations;
