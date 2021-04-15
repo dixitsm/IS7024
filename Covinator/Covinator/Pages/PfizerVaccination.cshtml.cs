@@ -34,7 +34,6 @@ namespace Covinator.Pages
                 JArray jsonArray = JArray.Parse(pfizerData);
                 IList<string> validationEvents = new List<string>();
                 var currentWeek1 = jsonArray[0];
-
                 var currentWeek = currentWeek1["week_of_allocations"];
 
 
