@@ -749,19 +749,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ruthv\\.nuget\\packages\\": {}
+    "C:\\Users\\Moiz\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\XML Final Project\\Covinator\\Covinator\\Covinator.csproj",
+      "projectUniqueName": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS7024\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
       "projectName": "Covinator",
-      "projectPath": "D:\\XML Final Project\\Covinator\\Covinator\\Covinator.csproj",
-      "packagesPath": "C:\\Users\\ruthv\\.nuget\\packages\\",
-      "outputPath": "D:\\XML Final Project\\Covinator\\Covinator\\obj\\",
+      "projectPath": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS7024\\IS7024\\Covinator\\Covinator\\Covinator.csproj",
+      "packagesPath": "C:\\Users\\Moiz\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Moiz\\OneDrive\\Documents\\GitHub\\IS7024\\IS7024\\Covinator\\Covinator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ruthv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Moiz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
